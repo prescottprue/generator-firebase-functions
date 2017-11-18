@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "prescottprue",
+      "authorEmail": "sprue.dev@gmail.com",
+      "authorUrl": "prue.io"
+    }
+  }
+}
