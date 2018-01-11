@@ -1,0 +1,25 @@
+root: true
+
+extends: [xo, prettier]
+plugins: [prettier]
+
+env:
+  browser: true
+  es6: true
+  node: true
+
+ecmaFeatures:
+  jsx: true
+  modules: true
+
+globals:
+  __DEV__: false
+  __COVERAGE__: false
+  __TEST__: false
+
+rules:
+  no-console: 'error'
+  prettier/prettier: ['error', {
+    singleQuote: true,
+    printWidth: 90
+  }]
