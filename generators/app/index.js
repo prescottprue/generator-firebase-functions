@@ -35,6 +35,12 @@ module.exports = class extends Generator {
         name: 'includeTests',
         message: 'Do you want to include tests?',
         default: true
+      },
+      {
+        type: 'confirm',
+        name: 'includeAsync',
+        message: 'Do you want to include support for async/await?',
+        default: true
       }
     ];
 
