@@ -13,3 +13,5 @@ globals:
 
 rules:
   no-unused-expressions: 0
+  max-nested-callbacks: 0
+  no-warning-comments: 0
