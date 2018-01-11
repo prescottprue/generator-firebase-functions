@@ -1,13 +1,3 @@
-/* eslint-disable global-require */
-// Chai is a commonly used library for creating unit test suites. It is easily extended with plugins.
-const chai = require('chai');
-// Sinon is a library used for mocking or verifying function calls in JavaScript.
-const sinon = require('sinon');
-const assert = chai.assert;
-const expect = chai.expect;
-const chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-
 describe('Cloud Functions', () => {
   let myFunctions;
   let configStub;
@@ -52,7 +42,7 @@ describe('Cloud Functions', () => {
     adminInitStub.restore();
   });
 
-  describe('Asana webhook', () => {
+  describe('HTTP Function', () => {
     beforeEach(() => {
       // [START stubAdminDatabase]
       const refParam = '/messages';
@@ -90,7 +80,7 @@ describe('Cloud Functions', () => {
       };
       // Invoke webhook with our fake request and response objects. This will cause the
       // assertions in the response object to be evaluated.
-      myFunctions.asanaWebhook(req, res);
+      myFunctions.helloWorld(req, res);
     });
 
     it('resolves when passed events', (done) => {
@@ -109,83 +99,7 @@ describe('Cloud Functions', () => {
       };
       // Invoke webhook with our fake request and response objects. This will cause the
       // assertions in the response object to be evaluated.
-      myFunctions.asanaWebhook(req, res);
-    });
-  });
-
-  describe('Docusign webhook', () => {
-    beforeEach(() => {
-      // [START stubAdminDatabase]
-      const refParam = '/messages';
-      const pushParam = { original: 'input' };
-      const refStub = sinon.stub();
-      const pushStub = sinon.stub();
-
-      // The following 4 lines override the behavior of admin.database().ref('/messages')
-      // .push({ original: 'input' }) to return a promise that resolves with { ref: 'new_ref' }.
-      // This mimics the behavior of a push to the database, which returns an object containing a
-      // ref property representing the URL of the newly pushed item.
-      databaseStub = sinon.stub(admin, 'database');
-      databaseStub.returns({ ref: refStub });
-      refStub.withArgs(refParam).returns({ push: pushStub });
-      pushStub.withArgs(pushParam).returns(Promise.resolve({ ref: 'new_ref' }));
-    });
-
-    afterEach(() => {
-      // Restoring admin.database() to the original method
-      databaseStub.restore();
-    });
-
-    it('responds with active message if there are no events', (done) => {
-      // A fake request object, with req.query.text set to 'input'
-      req = { headers: { } };
-      // A fake response object, with a stubbed writeHead and end methods
-      res = {
-        writeHead: () => {},
-        end: (str) => {
-          assert.equal(str, 'Webhook is running!');
-          done();
-        },
-      };
-      // Invoke webhook with our fake request and response objects. This will cause the
-      // assertions in the response object to be evaluated.
-      myFunctions.docusignWebhook(req, res);
-    });
-
-    it('resolves when passed events', (done) => {
-      // A fake request object, with req.query.text set to 'input'
-      req = { headers: { }, body: { events: [{ }] } };
-      // TODO: Stub internal functions and make sure they are called
-      // A fake response object, with a stubbed writeHead and end methods
-      res = {
-        writeHead: () => {},
-        end: (str) => {
-          assert.equal(str, 'Webhook is running!');
-          done();
-        },
-      };
-      // Invoke webhook with our fake request and response objects. This will cause the
-      // assertions in the response object to be evaluated.
-      myFunctions.docusignWebhook(req, res);
-    });
-
-    it.skip('throws for error case', (done) => {
-      // A fake request object, with req.query.text set to 'input'
-      req = { headers: { }, body: { events: [{ }] } };
-      // TODO: Stub internal functions and make sure they are called
-      // A fake response object, with a stubbed writeHead and end methods
-      res = {
-        writeHead: () => {
-
-        },
-        end: (str) => {
-          assert.equal(str, 'Thanks anyway :)');
-          done();
-        },
-      };
-      // Invoke webhook with our fake request and response objects. This will cause the
-      // assertions in the response object to be evaluated.
-      // expect(myFunctions.docusignWebhook(req, res)).to.Throw('some error')
+      myFunctions.helloWorld(req, res);
     });
   });
 });

@@ -4,7 +4,7 @@
  * @type {functions.CloudFunction}
  */
 export default functions.database
-  .ref(`/helloWorld`)
+  .ref(`/<%= lowerName %>`)
   .onWrite(sayHello)
 
 /**
@@ -13,6 +13,6 @@ export default functions.database
  * @param  {object|undefined} event.params - Parameters from event ref URL
  * @return {Promise}
  */
-async function sayHello(event) {
+async function <%= lowerName %>(event) {
 
 }

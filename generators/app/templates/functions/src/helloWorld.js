@@ -1,11 +1,11 @@
+import * as admin from 'firebase-admin'
+const functions = require('firebase-functions');
+
 /**
  * @name helloWorld
- * Convert a JSON file from storage bucket into a data on RTDB
  * @type {functions.CloudFunction}
  */
-export default functions.database
-  .ref(`/helloWorld`)
-  .onWrite(sayHello)
+export default functions.https.onRequest(handleRequest)
 
 /**
  * Say hello to the world to show Firebase functions are working
@@ -13,6 +13,6 @@ export default functions.database
  * @param  {object|undefined} event.params - Parameters from event ref URL
  * @return {Promise}
  */
-async function sayHello(event) {
-
+function handleRequest(request, response) {
+  response.send("Hello from Functions!");
 }
