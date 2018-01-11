@@ -4,7 +4,10 @@ const chalk = require('chalk');
 const path = require('path');
 const yosay = require('yosay');
 
-const filesArray = [{ src: 'functions/**', dest: 'functions' }];
+const filesArray = [
+  { src: 'functions/**', dest: 'functions' },
+  { src: 'gitignore', dest: '.gitignore' }
+];
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -65,6 +68,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall();
+    this.npmInstall([], { prefix: 'functions' });
   }
 };
