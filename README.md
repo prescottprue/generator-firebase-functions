@@ -4,7 +4,6 @@
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][npm-downloads-image]][npm-url]
-[![Quality][quality-image]][quality-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![License][license-image]][license-url]
@@ -44,7 +43,7 @@ Generate a single function by calling its type
 
 #### Database
 
-1. Run `yo firebase-functions:http myFunc`
+1. Run `yo firebase-functions:database myFunc`
 
 #### Storage
 
