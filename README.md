@@ -7,8 +7,6 @@
 [![Quality][quality-image]][quality-url]
 [![Build Status][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
-[![Code Coverage][coverage-image]][coverage-url]
-[![Code Climate][climate-image]][climate-url]
 [![License][license-image]][license-url]
 [![Code Style][code-style-image]][code-style-url]
 
@@ -23,11 +21,37 @@ npm install -g generator-firebase-functions
 
 ## Getting Started
 
-1. Enter an already existing Firebase project or create a project folder and enter it (`mkdir myProject && cd myProject`)
-1. Generate functions: `yo react-firebase`
+### Create Project
+This section can be skipped if you have an already existing Firebase project
+  1. Make a new folder and enter it: `mkdir myProject && cd myProject`
+  1. Running `npm init` to initialize an npm project *suggested but optional*
+  1. Make sure firebase-tools are installed with `npm i -g firebase-tools`
+  1. Run `firebase init` to initialize a Firebase project
+  1. Include at least Functions
+
+### Run Generator
+
+1. Enter an already existing Firebase project
+1. Generate functions: `yo firebase-functions`
+
+### Single Function
+
+Generate a single function by calling its type
+
+#### HTTP
+
+1. Run `yo firebase-functions:http myFunc`
+
+#### Database
+
+1. Run `yo firebase-functions:http myFunc`
+
+#### Storage
+
+1. Run `yo firebase-functions:storage myFunc`
 
 ## Roadmap
-* Single Function generator (HTTP, Database Event, Firestore Event, Analytics Event, or Storage Event)
+* Single Function generator for remaining event types (Analytics Event, PubSub event)
 * Option for each type of database event type (`onCreate`, `onWrite`)
 
 ## License
