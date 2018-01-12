@@ -6,6 +6,8 @@ const yosay = require('yosay');
 
 const filesArray = [
   { src: 'functions/**', dest: 'functions' },
+  { src: 'functions/.eslintrc', dest: 'functions/.eslintrc' },
+  { src: 'functions/.babelrc', dest: 'functions/.babelrc' },
   { src: 'gitignore', dest: '.gitignore' }
 ];
 
