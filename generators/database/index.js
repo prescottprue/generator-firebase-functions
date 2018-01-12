@@ -19,7 +19,7 @@ module.exports = class extends Generator {
         type: 'confirm',
         name: 'includeTests',
         message: 'Would you like to include tests?',
-        default: false
+        default: true
       }
     ];
 
@@ -30,13 +30,27 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('databaseFunction.js'),
-      this.destinationPath(`functions/${this.options.name}/index.js`),
-      Object.assign({}, this.answers, {
-        name: this.options.name,
-        lowerName: this.options.name.toLowerCase()
-      })
-    );
+    const filesArray = [
+      {
+        src: 'databaseFunction.js',
+        dest: `functions/src/${this.options.name}.js`
+      }
+    ];
+    if (this.props.includeTests) {
+      filesArray.push({
+        src: 'test.js',
+        dest: `functions/test/unit/${this.options.name}.spec.js`
+      });
+    }
+    filesArray.forEach(file => {
+      return this.fs.copyTpl(
+        this.templatePath(file.src || file),
+        this.destinationPath(file.dest || file.src || file),
+        Object.assign({}, this.answers, {
+          name: this.options.name,
+          lowerName: this.options.name.toLowerCase()
+        })
+      );
+    });
   }
 };

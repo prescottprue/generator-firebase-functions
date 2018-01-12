@@ -1,11 +1,6 @@
-import * as admin from 'firebase-admin'
-const functions = require('firebase-functions');
+// import * as admin from 'firebase-admin';
 
-/**
- * @name helloWorld
- * @type {functions.CloudFunction}
- */
-export default functions.https.onRequest(handleRequest)
+const functions = require('firebase-functions');
 
 /**
  * Say hello to the world to show Firebase functions are working
@@ -14,5 +9,12 @@ export default functions.https.onRequest(handleRequest)
  * @return {Promise}
  */
 function handleRequest(request, response) {
-  response.send("Hello from Functions!");
+  // const dbRef = admin.database().ref(); // eslint-disable-line no-unused-vars
+  response.send('Hello from Functions!');
 }
+
+/**
+ * @name helloWorld
+ * @type {functions.CloudFunction}
+ */
+export default functions.https.onRequest(handleRequest);

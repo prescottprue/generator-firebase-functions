@@ -8,6 +8,12 @@ const filesArray = [
   { src: 'functions/**', dest: 'functions' },
   { src: 'functions/.eslintrc', dest: 'functions/.eslintrc' },
   { src: 'functions/.babelrc', dest: 'functions/.babelrc' },
+  { src: '.babelrc', dest: '.babelrc' },
+  { src: 'firebase.json', dest: 'firebase.json' },
+  { src: '.eslintignore', dest: '.eslintignore' },
+  { src: '.eslintrc', dest: '.eslintrc' },
+  { src: 'package.json', dest: 'package.json' },
+  { src: 'README.md', dest: 'README.md' },
   { src: 'gitignore', dest: '.gitignore' }
 ];
 
@@ -52,7 +58,10 @@ module.exports = class extends Generator {
 
   writing() {
     if (this.props.includeTests) {
-      filesArray.push({ src: 'functions/test/**', dest: 'functions/test' });
+      filesArray.push(
+        { src: 'functions/test/**', dest: 'functions/test' },
+        { src: 'functions/test/.eslintrc', dest: 'functions/test/.eslintrc' }
+      );
     }
     filesArray.forEach(file => {
       if (file.src.indexOf('.png') !== -1) {
@@ -70,6 +79,8 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall([], { prefix: 'functions' });
+    this.npmInstall();
+    // Handled by postinstall in package.json
+    // this.npmInstall([], { prefix: 'functions' });
   }
 };

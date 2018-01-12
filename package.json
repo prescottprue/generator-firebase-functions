@@ -1,12 +1,20 @@
 {
   "name": "generator-firebase-functions",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generator for Cloud Functions for Firebase",
-  "homepage": "",
   "author": {
     "name": "prescottprue",
     "email": "sprue.dev@gmail.com",
     "url": "prue.io"
+  },
+  "scripts": {
+    "prepare": "nsp check",
+    "pretest": "eslint .",
+    "lint": "eslint generators test",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "mocha -R spec ./test/unit/** && npm run test:clean",
+    "test:cov": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit/** && npm run test:clean",
+    "test:clean": "rimraf test/tmp"
   },
   "files": [
     "generators"
@@ -20,6 +28,11 @@
     "yeoman",
     "yeoman-generator"
   ],
+  "dependencies": {
+    "yeoman-generator": "^2.0.1",
+    "chalk": "^2.1.0",
+    "yosay": "^2.0.1"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -36,42 +49,6 @@
     "rimraf": "^2.6.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
-  },
-  "dependencies": {
-    "yeoman-generator": "^2.0.1",
-    "chalk": "^2.1.0",
-    "yosay": "^2.0.1"
-  },
-  "scripts": {
-    "prepare": "nsp check",
-    "pretest": "eslint .",
-    "lint": "eslint generators test",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "mocha -R spec ./test/unit/** && npm run test:clean",
-    "test:cov": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit/** && npm run test:clean",
-    "test:clean": "rimraf test/tmp"
-  },
-  "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "printWidth": 90
-        }
-      ]
-    },
-    "plugins": [
-      "prettier"
-    ]
   },
   "repository": "https://github.com/prescottprue/generator-firebase-functions.git",
   "license": "MIT"
