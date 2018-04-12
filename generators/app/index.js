@@ -3,11 +3,13 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const path = require('path');
 const yosay = require('yosay');
+const commandExistsSync = require('command-exists').sync;
 
 const filesArray = [
   { src: 'functions/**', dest: 'functions' },
   { src: 'functions/.eslintrc', dest: 'functions/.eslintrc' },
   { src: 'functions/.babelrc', dest: 'functions/.babelrc' },
+  { src: 'functions/.runtimeconfig.json', dest: 'functions/.runtimeconfig.json' },
   { src: '.babelrc', dest: '.babelrc' },
   { src: 'firebase.json', dest: 'firebase.json' },
   { src: '.eslintignore', dest: '.eslintignore' },
@@ -46,6 +48,13 @@ module.exports = class extends Generator {
         name: 'includeTests',
         message: 'Do you want to include tests?',
         default: true
+      },
+      {
+        type: 'confirm',
+        name: 'useYarn',
+        message: 'Use Yarn?',
+        when: () => commandExistsSync('yarn'),
+        default: true
       }
     ];
 
@@ -60,7 +69,10 @@ module.exports = class extends Generator {
     if (this.props.includeTests) {
       filesArray.push(
         { src: 'functions/test/**', dest: 'functions/test' },
-        { src: 'functions/test/.eslintrc', dest: 'functions/test/.eslintrc' }
+        { src: 'functions/test/.eslintrc', dest: 'functions/test/.eslintrc' },
+        // { src: 'functions/test/mocha.opts', dest: 'functions/test/mocha.opts' },
+        // { src: 'functions/test/setup.js', dest: 'functions/test/setup.js' },
+        { src: 'functions/.istanbul.yml', dest: 'functions/.istanbul.yml' }
       );
     }
     filesArray.forEach(file => {

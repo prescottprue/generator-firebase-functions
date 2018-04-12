@@ -1,23 +1,25 @@
-import { getFunctionsWithMockedFirebase, restoreStubs } from '../utils';
+import * as admin from 'firebase-admin' // eslint-disable-line no-unused-vars
 
 describe('Cloud Functions', () => {
-  let myFunctions;
-  let configStub;
-  let adminInitStub;
+  let myFunctions
+  let configStub
+  let adminInitStub
+  let admin
 
   before(() => {
-    const mocked = getFunctionsWithMockedFirebase();
-    myFunctions = mocked.myFunctions;
-    configStub = mocked.configStub;
-    adminInitStub = mocked.adminInitStub;
-  });
+    /* eslint-disable global-require */
+    adminInitStub = sinon.stub(admin, 'initializeApp')
+    myFunctions = require(`${__dirname}/../../index`)
+    /* eslint-enable global-require */
+  })
 
   after(() => {
-    // Restoring our stubs to the original methods
-    restoreStubs([configStub, adminInitStub]);
-  });
+    // Restoring our stubs to the original methods.
+    configStub.restore()
+    adminInitStub.restore()
+  })
 
-  it('sets my functions', () => {
-    expect(myFunctions.helloWorld).to.exist;
-  });
-});
+  it('exports an object', () => {
+    expect(myFunctions).to.be.an('object')
+  })
+})

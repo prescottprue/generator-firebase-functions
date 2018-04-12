@@ -2,15 +2,13 @@
   "presets": [
     ["env", {
       "targets": {
-        "node": "current"
+        "chrome": 52,
+        "browsers": ["last 2 versions", "safari >= 7"]
       }
-    }],
+    }]
   ],
-  "env": {
-    "test": {
-      "plugins": [
-        "transform-runtime"
-      ]
-    }
-  }
+  "plugins": [
+    "lodash",
+    "transform-object-rest-spread",
+  ]
 }

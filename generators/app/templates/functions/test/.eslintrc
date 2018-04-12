@@ -6,15 +6,8 @@ env:
 globals:
   sinon: true
   expect: true
-  assert: true
-  after: true
-  afterEach: true
-  before: true
-  beforeEach: true
-  it: true
-  describe: true
-  uid: true
+  should: true
+  functionsTest: true
 
 rules:
   no-unused-expressions: 0
-  import/no-extraneous-dependencies: 0

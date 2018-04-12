@@ -2,5 +2,11 @@
 **/*.log
 .DS_Store
 **/.DS_Store
-node_modules
+**/dist
+**/node_modules
 coverage
+src/config.js
+functions/etc
+functions/dist
+functions/.runtimeconfig.json
+functions/etc

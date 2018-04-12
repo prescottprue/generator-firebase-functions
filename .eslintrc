@@ -1,21 +1,20 @@
 root: true
 
-extends: [xo, prettier]
-plugins: [prettier]
+parser: babel-eslint
+
+extends: [airbnb, prettier]
+plugins: [babel, prettier]
 
 env:
   browser: true
   es6: true
   node: true
 
-globals:
-  __DEV__: false
-  __COVERAGE__: false
-  __TEST__: false
-
 rules:
   no-console: 'error'
+  no-confusing-arrow: 0
+  no-case-declarations: 0
   prettier/prettier: ['error', {
     singleQuote: true,
-    printWidth: 90
+    trailingComma: 'es5'
   }]

@@ -1,78 +1,58 @@
 # generator-firebase-functions
 
-> Yeoman generator for Firebase Functions including support for separate files
-
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][npm-downloads-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Dependency Status][daviddm-image]][daviddm-url]
-[![License][license-image]][license-url]
 [![Code Style][code-style-image]][code-style-url]
-
-## Installation
-
-Install [Yeoman](http://yeoman.io) and generator-firebase-functions using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)):
-
-```bash
-npm install -g yo
-npm install -g generator-firebase-functions
-```
+[![Dependency Status][daviddm-image]][daviddm-url]
+[![Build Status][travis-image]][travis-url]
 
 ## Getting Started
 
-### Create Project
-This section can be skipped if you have an already existing Firebase project
-  1. Make a new folder and enter it: `mkdir myProject && cd myProject`
-  1. Running `npm init` to initialize an npm project *suggested but optional*
-  1. Make sure firebase-tools are installed with `npm i -g firebase-tools`
-  1. Run `firebase init` to initialize a Firebase project
-  1. Include at least Functions
+* Install dependencies: `npm install` (installs `functions` dependencies as well)
 
-### Run Generator
+## Building Functions
 
-1. Enter an already existing Firebase project
-1. Generate functions: `yo firebase-functions`
+Running in the root of the project:
 
-### Single Function
+```sh
+npm run functions:build
+```
 
-Generate a single function by calling its type
+In the `functions` folder:
 
-#### HTTP
+```sh
+npm run build
+```
 
-1. Run `yo firebase-functions:http myFunc`
+## Serving Functions
 
-#### Database
+Running in the root of the project:
 
-1. Run `yo firebase-functions:database myFunc`
+```sh
+npm run functions:serve
+```
 
-#### Storage
+In the `functions` folder:
 
-1. Run `yo firebase-functions:storage myFunc`
+```sh
+npm run serve
+```
 
-## Roadmap
-* Single Function generator for remaining event types (Analytics Event, PubSub event)
-* Option for each type of database event type (`onCreate`, `onWrite`)
+## Emulating Functions
 
-## License
+Functions can be emulated through the functions shell. To run in the root of the project:
 
-MIT © [Scott Prue](http://prue.io)
+```sh
+npm run functions:emulate
+```
 
-[npm-image]: https://img.shields.io/npm/v/generator-firebase-functions.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/generator-firebase-functions
-[npm-downloads-image]: https://img.shields.io/npm/dm/generator-firebase-functions.svg?style=flat-square
-[quality-image]: http://npm.packagequality.com/shield/generator-firebase-functions.svg?style=flat-square
-[quality-url]: https://packagequality.com/#?package=generator-firebase-functions
-[travis-image]: https://img.shields.io/travis/prescottprue/generator-firebase-functions/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/prescottprue/generator-firebase-functions
-[daviddm-image]: https://img.shields.io/david/prescottprue/generator-firebase-functions.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/prescottprue/generator-firebase-functions
-[climate-image]: https://img.shields.io/codeclimate/github/prescottprue/generator-firebase-functions.svg?style=flat-square
-[climate-url]: https://codeclimate.com/github/prescottprue/generator-firebase-functions
-[coverage-image]: https://img.shields.io/codeclimate/coverage/github/prescottprue/generator-firebase-functions.svg?style=flat-square
-[coverage-url]: https://codeclimate.com/github/prescottprue/generator-firebase-functions
-[license-image]: https://img.shields.io/npm/l/generator-firebase-functions.svg?style=flat-square
-[license-url]: https://github.com/prescottprue/generator-firebase-functions/blob/master/LICENSE
-[code-style-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
-[code-style-url]: http://standardjs.com/
-[gitter-image]: https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square
-[gitter-url]: https://gitter.im/prescottprue/generator-firebase-functions
+In the `functions` folder:
+
+```sh
+npm run emulate
+```
+
+[travis-image]: https://img.shields.io/travis/generator-firebase-functions/generator-firebase-functions/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/generator-firebase-functions/generator-firebase-functions
+[daviddm-image]: https://img.shields.io/david/generator-firebase-functions/generator-firebase-functions.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/generator-firebase-functions/generator-firebase-functions
+[code-style-image]: https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat-square
+[code-style-url]: https://github.com/airbnb/javascript
