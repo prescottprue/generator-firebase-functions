@@ -2,13 +2,8 @@ root: true
 
 parser: babel-eslint
 
-extends: [airbnb, prettier]
+extends: [standard, prettier]
 plugins: [babel, prettier]
-
-env:
-  browser: true
-  es6: true
-  node: true
 
 rules:
   no-console: 'error'
@@ -16,5 +11,9 @@ rules:
   no-case-declarations: 0
   prettier/prettier: ['error', {
     singleQuote: true,
-    trailingComma: 'es5'
+    trailingComma: 'none',
+    semi: false,
+    printWidth: 80,
+    tabWidth: 2,
+    useTabs: false
   }]

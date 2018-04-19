@@ -4,16 +4,16 @@
   "description": "Generator for Cloud Functions for Firebase",
   "author": {
     "name": "prescottprue",
-    "email": "sprue.dev@gmail.com",
-    "url": "prue.io"
+    "email": "sprue.dev@gmail.com"
   },
   "scripts": {
     "prepare": "nsp check",
     "pretest": "eslint .",
+    "prepush": "npm run lint",
     "lint": "eslint generators test",
     "lint:fix": "npm run lint -- --fix",
     "test": "mocha -R spec ./test/unit/** && npm run test:clean",
-    "test:cov": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit/** && npm run test:clean",
+    "test:cov": "istanbul cover $(npm bin)/_mocha ./test/unit/** && npm run test:clean",
     "test:clean": "rimraf test/tmp"
   },
   "files": [
@@ -38,13 +38,17 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.0",
     "eslint": "^4.1.0",
     "eslint-config-prettier": "^2.4.0",
-    "eslint-config-xo": "^0.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.4.2",

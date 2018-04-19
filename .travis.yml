@@ -3,9 +3,31 @@ language: node_js
 sudo: false
 
 node_js:
-  - 6
+  - 6.11.5
   - 8
   - 9
+
+branches:
+  only:
+    - master
+
+cache:
+  bundler: true
+  directories:
+    - node_modules # NPM packages
+
+script:
+  - npm run lint
+  - npm run test:cov
+
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  on:
+    node: '9'
+    branch: 'master'
 
 notifications:
   email:
