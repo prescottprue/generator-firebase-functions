@@ -1,6 +1,6 @@
 {
   "name": "generator-firebase-functions",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Generator for Cloud Functions for Firebase",
   "author": {
     "name": "prescottprue",
