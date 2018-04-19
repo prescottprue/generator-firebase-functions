@@ -7,7 +7,7 @@
   },
   "scripts": {
     <% if (includeTests) { %>"test": "npm run build && mocha ./test/unit/**",
-    "test:cov": "cross-env COVERAGE=true istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit/**",<% } else { %>
+    "test:cov": "cross-env COVERAGE=true istanbul cover $(npm bin)/_mocha ./test/unit/**",<% } else { %>
     "test": "echo \"No tests included.\"",<% } %>
     "lint": "eslint -c .eslintrc ./src",
     "build": "npm run clean && babel src -d --out-dir dist",
@@ -40,7 +40,7 @@
     "firebase-functions-test": "^0.1.1",
     "istanbul": "1.1.0-alpha.1",
     "mocha": "^5.0.4",<% } %>
-    "rimraf": "^2.6.2",<% if (includeTests) { %>
+    "rimraf": "^2.6.2"<% if (includeTests) { %>,
     "sinon": "^4.1.2"<% } %>
   }
 }

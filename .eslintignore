@@ -1,8 +1,4 @@
-examples/**
 coverage/**
 node_modules/**
-lib/**
-es/**
-dist/**
-functions/dist
-functions/etc
+generators/app/templates/**
+generators/function/templates/**
