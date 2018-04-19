@@ -1,8 +1,19 @@
 # generator-firebase-functions
 
+> Yeoman generator for starting projects using Firebase Functions (tests optional). Includes function sub-generator.
+
+[![NPM version][npm-image]][npm-url]
 [![Code Style][code-style-image]][code-style-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![Build Status][travis-image]][travis-url]
+
+## Installation
+
+Install [Yeoman](http://yeoman.io) and generator-firebase-functions using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)):
+
+```bash
+npm install -g yo generator-firebase-functions
+```
 
 ## Getting Started
 
@@ -152,7 +163,9 @@ async function uppercaserEvent(change, context) {
 
 Note: This sub-generator does not support the Path Argument (functions are already placed within a folder matching their name).
 
-
+[npm-image]: https://img.shields.io/npm/v/generator-firebase-functions.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/generator-firebase-functions
+[npm-downloads-image]: https://img.shields.io/npm/dm/generator-firebase-functions.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/generator-firebase-functions/generator-firebase-functions/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/generator-firebase-functions/generator-firebase-functions
 [daviddm-image]: https://img.shields.io/david/generator-firebase-functions/generator-firebase-functions.svg?style=flat-square
