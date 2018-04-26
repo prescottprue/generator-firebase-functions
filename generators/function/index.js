@@ -150,7 +150,7 @@ module.exports = class extends Generator {
     if (this.options.test || this.answers.includeTests) {
       filesArray.push({
         src: `_${triggerType}Test.js`,
-        dest: `functions/test/${camelName}/index.spec.js`
+        dest: `functions/test/${camelName}.spec.js`
       })
     }
 

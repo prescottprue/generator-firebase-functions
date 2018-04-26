@@ -14,6 +14,7 @@ const filesArray = [
   },
   { src: '.babelrc', dest: '.babelrc' },
   { src: 'firebase.json', dest: 'firebase.json' },
+  { src: '.firebaserc', dest: '.firebaserc' },
   { src: '.eslintignore', dest: '.eslintignore' },
   { src: '.eslintrc', dest: '.eslintrc' },
   { src: 'package.json', dest: 'package.json' },

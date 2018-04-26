@@ -1,6 +1,7 @@
 const glob = require('glob')
 const path = require('path')
 const admin = require('firebase-admin')
+const functions = require('firebase-functions');
 
 const config = {
   // Files/folders which do not contain cloud functions (relative to src)

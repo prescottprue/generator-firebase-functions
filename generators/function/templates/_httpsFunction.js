@@ -8,10 +8,10 @@ import * as functions from 'firebase-functions'
 export default functions.https.<%= eventType %>(<%= name %>Request)
 
 /**
- * @param req - Request
- * @param res - Response
+ * @param request - Express wrapped HTTP request object
+ * @param response - Express wrapped HTTP response object
  */
-function <%= name %>Request(req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
-  res.end(`Hello from <%= name %>`)
+function <%= name %>Request(request, response) {
+  response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
+  response.send('Hello from <%= name %>')
 }

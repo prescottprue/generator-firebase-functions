@@ -1,6 +1,6 @@
 {
   "projects": {
-    "master": "<%= firebaseName %>",
-    "default": "<%= firebaseName %>"
+    "master": "<%= appName %>",
+    "default": "<%= appName %>"
   }
 }
