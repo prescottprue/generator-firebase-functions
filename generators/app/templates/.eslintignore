@@ -6,3 +6,4 @@ es/**
 dist/**
 functions/dist
 functions/etc
+functions/node_modules/**
