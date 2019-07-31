@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "master": "basic",
+    "default": "basic"
+  }
+}
