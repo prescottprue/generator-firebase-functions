@@ -5,8 +5,8 @@
 **/dist
 **/node_modules
 coverage
-src/config.js
 functions/etc
 functions/dist
 functions/.runtimeconfig.json
-functions/etc
+functions/coverage
+functions/.nyc_output
