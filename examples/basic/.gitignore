@@ -7,6 +7,6 @@
 coverage
 functions/etc
 functions/dist
-functions/.runtimeconfig.json<% if (includeTests) { %>
+functions/.runtimeconfig.json
 functions/coverage
-functions/.nyc_output<% } %>
+functions/.nyc_output

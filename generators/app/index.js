@@ -6,17 +6,16 @@ const commandExistsSync = require('command-exists').sync
 
 const filesArray = [
   { src: 'functions/**', dest: 'functions' },
-  { src: 'functions/.eslintrc', dest: 'functions/.eslintrc' },
+  { src: 'functions/.eslintrc.js', dest: 'functions/.eslintrc.js' },
   { src: 'functions/.babelrc', dest: 'functions/.babelrc' },
   {
     src: 'functions/.runtimeconfig.json',
     dest: 'functions/.runtimeconfig.json'
   },
-  { src: '.babelrc', dest: '.babelrc' },
   { src: 'firebase.json', dest: 'firebase.json' },
   { src: '.firebaserc', dest: '.firebaserc' },
   { src: '.eslintignore', dest: '.eslintignore' },
-  { src: '.eslintrc', dest: '.eslintrc' },
+  { src: '.eslintrc.js', dest: '.eslintrc.js' },
   { src: 'package.json', dest: 'package.json' },
   { src: 'README.md', dest: 'README.md' },
   { src: 'gitignore', dest: '.gitignore' }
@@ -72,15 +71,13 @@ module.exports = class extends Generator {
   writing() {
     if (this.props.includeTests) {
       filesArray.push(
-        { src: 'functions/test/**', dest: 'functions/test' },
-        { src: 'functions/test/.eslintrc', dest: 'functions/test/.eslintrc' },
-        // { src: 'functions/test/mocha.opts', dest: 'functions/test/mocha.opts' },
+        { src: 'functions/scripts/**', dest: 'functions/scripts' },
+        { src: 'functions/mocha.opts' }
         // { src: 'functions/test/setup.js', dest: 'functions/test/setup.js' },
-        { src: 'functions/.istanbul.yml', dest: 'functions/.istanbul.yml' }
       )
     }
     filesArray.forEach(file => {
-      if (file.src.indexOf('.png') !== -1) {
+      if (file.noTemplating || file.src.indexOf('.png') !== -1) {
         return this.fs.copy(
           this.templatePath(file.src),
           this.destinationPath(file.dest || file.src || file)
@@ -95,8 +92,28 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall()
-    // Handled by postinstall in package.json
-    // this.npmInstall([], { prefix: 'functions' });
+    /* eslint-disable no-console */
+    console.log(chalk.blue('\nProject Generated successfully'))
+    const yarnExists = commandExistsSync('yarn')
+    const installCommand = yarnExists ? 'yarnInstall' : 'npmInstall'
+    const depManagerName = yarnExists ? 'Yarn' : 'NPM'
+    console.log(`Installing dependencies using ${depManagerName}...`)
+    // Promise chaining used since this.npmInstall.then not a function
+    return Promise.resolve()
+      .then(() => {
+        return Promise.all([
+          this[installCommand](),
+          this[installCommand](undefined, {
+            [yarnExists ? 'cwd' : 'prefix']: 'functions'
+          })
+        ])
+      })
+      .then(() => {
+        console.log(
+          chalk.blue(
+            `Dependencies successfully installed using ${depManagerName}...`
+          )
+        )
+      })
   }
 }

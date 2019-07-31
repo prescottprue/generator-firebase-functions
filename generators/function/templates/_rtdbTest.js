@@ -7,10 +7,8 @@ describe('<%= camelName %> RTDB Cloud Function (<%= eventType %>)', () => {
   let <%= camelName %>
 
   before(() => {
-    /* eslint-disable global-require */
     adminInitStub = sinon.stub(admin, 'initializeApp')
-    // Syntax may change when this issue is addressed
-    // [#2](https://github.com/firebase/firebase-functions-test/issues/2)
+    /* eslint-disable global-require */
     <%= camelName %> = functionsTest.wrap(
       require(`${__dirname}/../../index`).<%= camelName %>
     )
@@ -50,10 +48,8 @@ describe('<%= camelName %> RTDB Cloud Function (<%= eventType %>)', () => {
   let <%= camelName %>
 
   before(() => {
-    /* eslint-disable global-require */
     adminInitStub = sinon.stub(admin, 'initializeApp')
-    // Syntax may change when this issue is addressed
-    // [#2](https://github.com/firebase/firebase-functions-test/issues/2)
+    /* eslint-disable global-require */
     <%= camelName %> = functionsTest.wrap(
       require(`${__dirname}/../../index`).<%= camelName %>
     )
@@ -125,7 +121,7 @@ describe('<%= camelName %> RTDB Cloud Function (<%= eventType %>)', () => {
         adminInitStub,
         null,
         { some: 'thing' }, // data object
-        'requests/fileToDb/123ABC'
+        'requests/<%= camelName %>/123ABC'
       )
     }
     // Invoke with fake event object

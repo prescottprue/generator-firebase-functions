@@ -1,5 +1,5 @@
 {
-  "name": "<%= appName %>",
+  "name": "basic",
   "version": "0.0.0",
   "description": "Project generated with generator-firebase-functions.",
   "scripts": {
@@ -28,9 +28,9 @@
     "prettier": "^1.18.2"
   },
   "license": "MIT",
-  "homepage": "https://github.com/<%= appName %>/<%= appName %>#readme",
+  "homepage": "https://github.com/basic/basic#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<%= appName %>/<%= appName %>.git"
+    "url": "git+https://github.com/basic/basic.git"
   }
 }

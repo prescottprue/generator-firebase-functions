@@ -1,18 +1,14 @@
 <% if (functionsV1 && eventType !== 'onWrite' && eventType !== 'onUpdate') { %>import * as admin from 'firebase-admin'
 
 describe('<%= camelName %> Firestore Cloud Function (<%= eventType %>)', () => {
-  let myFunctions
   let adminInitStub
   let <%= camelName %>
 
   before(() => {
-    /* eslint-disable global-require */
     adminInitStub = sinon.stub(admin, 'initializeApp')
-    myFunctions = require(`${__dirname}/../../index`)
-    // Syntax may change when this issue is addressed
-    // [#2](https://github.com/firebase/firebase-functions-test/issues/2)
-    <%= camelName %> = await functionsTest.wrap(
-      myFunctions.<%= camelName %>
+    /* eslint-disable global-require */
+    <%= camelName %> = functionsTest.wrap(
+      require(`${__dirname}/../../index`).<%= camelName %>
     )
     /* eslint-enable global-require */
   })
@@ -30,20 +26,13 @@ describe('<%= camelName %> Firestore Cloud Function (<%= eventType %>)', () => {
     const res = await <%= camelName %>(fakeEvent, fakeContext)
     expect(res).to.be.null
   })
-})<% } else if (functionsV1 && (eventType === 'onWrite' || eventType === 'onUpdate')) { %>import * as admin from 'firebase-admin'
-
-describe('<%= camelName %> Firestore Cloud Function (<%= eventType %>)', () => {
-  let myFunctions
-  let functions
+})<% } else if (functionsV1 && (eventType === 'onWrite' || eventType === 'onUpdate')) { %>describe('<%= camelName %> Firestore Cloud Function (<%= eventType %>)', () => {
   let <%= camelName %>
 
   before(() => {
     /* eslint-disable global-require */
-    myFunctions = require(`${__dirname}/../../index`)
-    // Syntax may change when this issue is addressed
-    // [#2](https://github.com/firebase/firebase-functions-test/issues/2)
-    <%= camelName %> = await functionsTest.wrap(
-      myFunctions.<%= camelName %>
+    <%= camelName %> = functionsTest.wrap(
+      require(`${__dirname}/../../index`).<%= camelName %>
     )
     /* eslint-enable global-require */
   })
@@ -51,7 +40,6 @@ describe('<%= camelName %> Firestore Cloud Function (<%= eventType %>)', () => {
   after(() => {
     // Restoring stubs to the original methods
     functionsTest.cleanup()
-    adminInitStub.restore()
   })
 
   it('returns null if display name is not changed', async () => {
